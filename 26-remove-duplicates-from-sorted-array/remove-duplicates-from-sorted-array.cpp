@@ -3,9 +3,9 @@ public:
     int removeDuplicates(vector<int>& nums) {
         int i=0,j=i+1;
         while(j<nums.size()){
-            if(nums[i]==nums[j])
-            j++;
-            else{
+            if(nums[i] == nums[j]){
+            j++;}
+            else {
                 i++;
                 swap(nums[i],nums[j]);
                 j++;
