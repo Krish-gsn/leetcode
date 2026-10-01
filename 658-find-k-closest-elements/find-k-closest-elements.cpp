@@ -3,14 +3,10 @@ public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
         int l=0,h=arr.size()-1;
         while(h-l>=k){
-            if(abs(arr[l]-x)==abs(arr[h]-x)){
-                if(arr[l]<=arr[h]){
-                    h--;
-                }
+            if(abs(arr[l]-x) >abs(arr[h]-x)){
+                l++;
             }
-            else if(abs(arr[l]-x)>abs(arr[h]-x))
-            l++;
-            else
+            else 
             h--;
         }
         vector<int>ans;
