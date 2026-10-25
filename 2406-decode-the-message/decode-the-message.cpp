@@ -1,37 +1,21 @@
 class Solution {
 public:
     string decodeMessage(string key, string message) {
-        // Step 1: Create mapping
-        unordered_map<char, char> mapping;
-
-        char space = ' ';
-        mapping[space] = space;
-
-        char start = 'a';
-        int index = 0;
-
-        while (start <= 'z' && index < key.length()) {
-            char keyKaCurrentCharacter = key[index];
-
-            if (mapping.find(keyKaCurrentCharacter) != mapping.end()) {
-                index++;
-            }
-            else {
-                mapping[keyKaCurrentCharacter] = start;
-                start++;
-                index++;
+        unordered_map<char,char>m;
+        char c='a';
+        for(int i=0;i<key.size();i++){
+            if(key[i]!=' ' && m.find(key[i])==m.end()){
+                m[key[i]]=c;
+                c++;
             }
         }
-
-        // Step 2: Decode message
-        string ans = "";
-
-        for (int i = 0; i < message.length(); i++) {
-            char msgCharacter = message[i];
-            char mappedCharacter = mapping[msgCharacter];
-            ans += mappedCharacter;
+        string ans="";
+        for(int i=0;i<message.size();i++){
+            if(message[i]==' ')
+            ans=ans+" ";
+            else 
+            ans=ans+m[message[i]];
         }
-
         return ans;
     }
 };
